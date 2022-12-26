@@ -16,28 +16,75 @@
            <a href="#login">Login</a>
         </nav>    
     </div>    
+    
     <div class="intro">
         <h1>MCQ Generator for Competitive Exams</h1>
         <p>This is a simple tool that helps you generate MCQ questions for testing your knowledge from the material you have covered</p>
         <!-- Add example in video format or gif or some other means -->
     </div>
+    
     <div class="container">
-        <div class="">
+        <div class="engine">
             <!-- Enter text box to take input for number of questions -->
+            <label for="name">Enter the number of MCQ's that you want to generate </label>
+            <input type="number" id="num" name="name">
+            
             <!-- Enter text area to take paragraph input-->
+            <label for="text-space">Enter the Text for which you want to generate MCQ's</label>
+            <textarea rows="20" cols="40" id="word" name=""text-space></textarea>">
+
             <!-- Display wordcount -->
+            <p> Word Count:
+                <span id="show">0</span>
+            </p>
+         
+         
+            <script>
+                document
+                  .querySelector("#word")
+                  .addEventListener("input", function countWord() {
+                    let res = [];
+                    let str = this.value.replace(/[\t\n\r\.\?\!]/gm, " ").split(" ");
+                    str.map((s) => {
+                      let trimStr = s.trim();
+                      if (trimStr.length > 0) {
+                        res.push(trimStr);
+                      }
+                    });
+                    document.querySelector("#show").innerText = res.length;
+                  });
+              </script>
+
             <!-- Display ideal wordcount vs actual wordcount -->
         </div>
+       
         <div class="grid">
             <!-- Manual attempt -->
+            <div class="g one">
+                <p>Write the answers on pen and paper and verify them manually</p>
+                <button class="gbut">Display Answers</button>
+            </div>    
             <!-- Without Timer -->
+            <div class="g two">
+                <p>Answer the MCQ without timer but it allows you to save progress and review and analyse your performance at various MCQ's</p>
+                <button class="gbut">Start Now</button>
+            </div>
             <!-- With Timer -->
+            <div class="g three">
+                <p>Answer the MCQ's with a clock clicking just like your real exams alog with benefits of review and analysis with saved progress</p>
+                <button class="gbut">Start now</button>
+            </div>
         </div>
-        <div class="">
+        
+        <div class="end">
         <!-- Section to display answers from manual -->
+        <textarea id="ans" name="ans" rows="5" cols="10">Diplays answers</textarea>
         <!-- Enter button to reset page -->
+        <button>Start Afresh</button>
         </div>    
+    
     </div>
 
 </body>
+
 </html>
